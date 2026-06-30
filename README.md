@@ -184,11 +184,14 @@ Integration tests run each engine in an ephemeral container via
 
 ## License
 
-`q` is released into the public domain under [CC0 1.0](LICENSE).
+To the extent possible under law, [Caian Ertl][me] has waived __all copyright
+and related or neighboring rights to this work__. In the spirit of _freedom of
+information_, I encourage you to fork, modify, change, share, or do whatever
+you like with this project! [`^C ^V`][kopimi]
 
-— Caian Ertl &lt;<https://github.com/upsetbit>&gt;
+[![License][cc-shield]][cc-url]
 
-```text
-              ___
-       ^C ^V /   \
-```
+[me]: https://github.com/upsetbit
+[cc-shield]: https://forthebadge.com/images/badges/cc-0.svg
+[cc-url]: http://creativecommons.org/publicdomain/zero/1.0
+[kopimi]: https://kopimi.com

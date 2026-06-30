@@ -42,6 +42,10 @@ test-race:
 test-integration:
     go test -tags=integration -race -count=1 -timeout 900s ./...
 
+# drive the compiled CLI against real databases via docker compose
+test-e2e:
+    sh scripts/e2e.sh
+
 # coverage profile + per-function totals
 cover:
     go test -coverprofile=coverage.out ./...
