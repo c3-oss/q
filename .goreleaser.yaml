@@ -70,19 +70,17 @@ release:
   prerelease: auto
   name_template: '{{ .ProjectName }} {{ .Version }}'
 
-# Optional: uncomment and configure when ready.
-#
-# homebrew_casks:
-#   - name: q
-#     binaries:
-#       - q
-#     repository:
-#       owner: c3-oss
-#       name: homebrew-tap
-#       token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
-#     commit_author:
-#       name: c3-oss-bot
-#       email: bot@c3.do
-#     homepage: "https://github.com/c3-oss/<your-repo>"
-#     description: "<one-line description>"
-#     directory: Casks
+homebrew_casks:
+  - name: q
+    binaries:
+      - q
+    repository:
+      owner: c3-oss
+      name: homebrew-q
+      token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
+    commit_author:
+      name: c3-oss-bot
+      email: bot@c3.do
+    homepage: "https://github.com/c3-oss/q"
+    description: "read-only multi-database query CLI"
+    directory: Casks
