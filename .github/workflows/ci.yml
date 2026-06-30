@@ -168,7 +168,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -185,7 +185,6 @@ jobs:
           path: |
             ~/go/pkg/mod
             ~/.cache/go-build
-            ~/Library/Caches/go-build
           key: ${{ matrix.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ matrix.os }}-go-
