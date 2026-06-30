@@ -49,7 +49,7 @@ jobs:
           devbox-version: 0.17.4
 
       - name: Cache Go modules and build
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: |
             ~/go/pkg/mod
@@ -128,7 +128,7 @@ jobs:
           devbox-version: 0.17.4
 
       - name: Cache Go modules and build
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: |
             ~/go/pkg/mod
