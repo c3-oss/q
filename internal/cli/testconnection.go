@@ -38,7 +38,7 @@ func newTestConnectionCmd() *cobra.Command {
 			detail := info.Host
 			if d, ok := ad.(adapter.Describer); ok {
 				if s := d.Describe(ctx); s != "" {
-					detail = s
+					detail = info.Host + " (" + s + ")"
 				}
 			}
 			fmt.Fprintf(cmd.OutOrStdout(), "ok: %s — connected to %s\n", info.Engine, detail)
