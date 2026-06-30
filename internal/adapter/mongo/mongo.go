@@ -50,7 +50,7 @@ func databaseName(uri string) (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("mongo: parse connection string: %w", err)
 	}
-	db := strings.TrimPrefix(u.Path, "/")
+	db := strings.Trim(u.Path, "/")
 	if db == "" {
 		return "", fmt.Errorf("mongo: no database in connection string path")
 	}
