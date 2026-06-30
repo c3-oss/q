@@ -1,4 +1,4 @@
-module github.com/c3-oss/go-template
+module github.com/c3-oss/q
 
 go 1.26.2
 

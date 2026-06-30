@@ -1,18 +1,18 @@
-// Package cli wires the Cobra command tree for myapp.
+// Package cli wires the Cobra command tree for q.
 package cli
 
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/c3-oss/go-template/internal/logging"
+	"github.com/c3-oss/q/internal/logging"
 )
 
 func newRootCmd() *cobra.Command {
 	var logLevel string
 
 	cmd := &cobra.Command{
-		Use:           "myapp",
-		Short:         "myapp — replace with a one-line summary of your application",
+		Use:           "q",
+		Short:         "q — replace with a one-line summary of your application",
 		SilenceUsage:  true,
 		SilenceErrors: true,
 		PersistentPreRunE: func(_ *cobra.Command, _ []string) error {

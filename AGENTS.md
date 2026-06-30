@@ -5,9 +5,9 @@ Read this end-to-end before proposing substantial changes.
 
 ## Project shape
 
-- **Module**: declared in `go.mod`. The template ships as `github.com/c3-oss/go-template`; after `./scripts/setup.sh` it will reflect your repo path.
+- **Module**: declared in `go.mod`. The template ships as `github.com/c3-oss/q`; after `./scripts/setup.sh` it will reflect your repo path.
 - **Layout**:
-  - `cmd/<binary>/` — entrypoints (`main` packages). The template ships with one (`cmd/myapp/`); add more by mirroring the pattern.
+  - `cmd/<binary>/` — entrypoints (`main` packages). The template ships with one (`cmd/q/`); add more by mirroring the pattern.
   - `internal/` — non-exportable application code (`buildinfo`, `cli`, `logging`).
   - `pkg/` — exportable packages. Empty by default; add carefully — API stability matters here.
   - `scripts/` — small bash utilities (rename, coverage report).

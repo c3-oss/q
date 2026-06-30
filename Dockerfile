@@ -14,11 +14,11 @@ COPY . .
 RUN mkdir -p /out && CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH \
     go build \
       -ldflags="-s -w \
-        -X github.com/c3-oss/go-template/internal/buildinfo.Version=${VERSION} \
-        -X github.com/c3-oss/go-template/internal/buildinfo.Commit=${COMMIT} \
-        -X github.com/c3-oss/go-template/internal/buildinfo.BuildDate=${BUILD_DATE}" \
+        -X github.com/c3-oss/q/internal/buildinfo.Version=${VERSION} \
+        -X github.com/c3-oss/q/internal/buildinfo.Commit=${COMMIT} \
+        -X github.com/c3-oss/q/internal/buildinfo.BuildDate=${BUILD_DATE}" \
       -o /out/ ./cmd/...
 
-FROM gcr.io/distroless/static-debian12 AS myapp
-COPY --from=build /out/myapp /usr/local/bin/myapp
-ENTRYPOINT ["/usr/local/bin/myapp"]
+FROM gcr.io/distroless/static-debian12 AS q
+COPY --from=build /out/q /usr/local/bin/q
+ENTRYPOINT ["/usr/local/bin/q"]
