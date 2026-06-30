@@ -13,3 +13,6 @@
 coverage.txt
 coverage.html
 *.db
+
+# generated npm platform binaries (assembled at release time)
+/npm/q-*/bin/

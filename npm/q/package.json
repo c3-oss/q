@@ -1,0 +1,42 @@
+{
+  "name": "@c3-oss/q",
+  "version": "0.0.0-dev",
+  "type": "module",
+  "description": "read-only multi-database query CLI",
+  "homepage": "https://github.com/c3-oss/q",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/c3-oss/q.git"
+  },
+  "license": "CC0-1.0",
+  "bin": {
+    "q": "bin/q.js"
+  },
+  "files": [
+    "bin/q.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "optionalDependencies": {
+    "@c3-oss/q-darwin-arm64": "0.0.0-dev",
+    "@c3-oss/q-darwin-amd64": "0.0.0-dev",
+    "@c3-oss/q-linux-amd64": "0.0.0-dev",
+    "@c3-oss/q-linux-arm64": "0.0.0-dev"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "cli",
+    "database",
+    "query",
+    "read-only",
+    "sql",
+    "postgres",
+    "mysql",
+    "sqlite",
+    "mongodb",
+    "redis",
+    "dynamodb"
+  ]
+}

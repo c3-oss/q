@@ -21,7 +21,17 @@ rejects any mutation or DDL before execution.
 ## Install
 
 ```sh
+# Go
 go install github.com/c3-oss/q/cmd/q@latest
+
+# Homebrew
+brew install c3-oss/q/q
+
+# npm
+npm install -g @c3-oss/q
+
+# Docker
+docker run --rm -i ghcr.io/c3-oss/q:latest --help
 ```
 
 Or build from source: `just build` produces `bin/q`.

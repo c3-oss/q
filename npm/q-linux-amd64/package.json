@@ -1,0 +1,11 @@
+{
+  "name": "@c3-oss/q-linux-amd64",
+  "version": "0.0.0-dev",
+  "description": "q CLI binary for Linux amd64",
+  "homepage": "https://github.com/c3-oss/q",
+  "license": "CC0-1.0",
+  "os": ["linux"],
+  "cpu": ["x64"],
+  "files": ["bin/q"],
+  "preferUnplugged": true
+}
