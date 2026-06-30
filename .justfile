@@ -38,6 +38,10 @@ test:
 test-race:
     go test -race -count=1 ./...
 
+# run the testcontainers integration suite (requires Docker)
+test-integration:
+    go test -tags=integration -race -count=1 -timeout 900s ./...
+
 # coverage profile + per-function totals
 cover:
     go test -coverprofile=coverage.out ./...
