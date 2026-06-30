@@ -1,29 +1,68 @@
-# Stub Compose file — uncomment services as you add dependencies (Postgres,
-# Redis, MinIO, etc). The q service builds the local image from this
-# repo's Dockerfile.
+# Compose file for local development and the end-to-end CLI tests.
+#
+# The database services below back scripts/e2e.sh, which drives the real `q`
+# binary against each engine (see `just test-e2e`). The `q` service builds the
+# CLI image from the Dockerfile for manual use and is kept out of the default
+# `up` via a profile.
 services:
   q:
     build:
       context: .
       target: q
     image: q:local
-    # ports:
-    #   - "8080:8080"
-    # env_file:
-    #   - .env
-    # depends_on:
-    #   - postgres
+    profiles: ["app"]
 
-  # postgres:
-  #   image: postgres:16-alpine
-  #   environment:
-  #     POSTGRES_USER: q
-  #     POSTGRES_PASSWORD: q
-  #     POSTGRES_DB: q
-  #   ports:
-  #     - "5432:5432"
-  #   volumes:
-  #     - postgres-data:/var/lib/postgresql/data
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: q
+      POSTGRES_PASSWORD: q
+      POSTGRES_DB: app
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./testdata/e2e/postgres-init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U q -d app"]
+      interval: 2s
+      timeout: 3s
+      retries: 40
 
-# volumes:
-#   postgres-data:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app
+      MYSQL_USER: q
+      MYSQL_PASSWORD: q
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./testdata/e2e/mysql-init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -proot --silent"]
+      interval: 3s
+      timeout: 4s
+      retries: 40
+
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./testdata/e2e/mongo-init.js:/docker-entrypoint-initdb.d/init.js:ro
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 3s
+      timeout: 4s
+      retries: 40
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 3s
+      retries: 40
