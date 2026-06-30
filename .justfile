@@ -77,8 +77,12 @@ lint-vuln:
     @command -v govulncheck >/dev/null 2>&1 || { echo "govulncheck not in PATH — run 'just tools' to install it"; exit 127; }
     govulncheck ./...
 
+# offline checks for the npm packaging and publish script
+npm-check:
+    sh scripts/publish-npm.test.sh
+
 # focused non-Go quality gates
-quality: lint-md lint-links lint-secrets
+quality: lint-md lint-links lint-secrets npm-check
 
 # local pre-push hook gate
 hooks-pre-push: quality
