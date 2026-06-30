@@ -18,7 +18,7 @@ labels: bug
 
 ## Environment
 
-- Version: <!-- `myapp version` -->
+- Version: <!-- `q version` -->
 - OS / Arch:
 - Install method: <!-- binary, brew, docker, source -->
 

@@ -1,7 +1,7 @@
 set shell := ["/bin/bash", "-c"]
 
 BIN := "bin"
-DEFAULT_BINARY := "myapp"
+DEFAULT_BINARY := "q"
 CLI := "bin/" + DEFAULT_BINARY
 
 # --------------------------------------------------------------------------------------------------
@@ -37,6 +37,10 @@ test:
 # run the test suite with the race detector
 test-race:
     go test -race -count=1 ./...
+
+# run the testcontainers integration suite (requires Docker)
+test-integration:
+    go test -tags=integration -race -count=1 -timeout 900s ./...
 
 # coverage profile + per-function totals
 cover:
