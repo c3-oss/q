@@ -1,10 +1,10 @@
-// Command q is the placeholder entrypoint of this template.
-//
-// Replace this package with your own binary's name via scripts/setup.sh
-// after creating a new repo from the template.
+// Command q is a read-only, multi-database query CLI. It detects the engine
+// from the connection-string scheme, runs one read-only query, and streams the
+// result as CSV, JSON, or a table.
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/c3-oss/q/internal/cli"
@@ -12,6 +12,7 @@ import (
 
 func main() {
 	if err := cli.Execute(); err != nil {
-		os.Exit(1)
+		fmt.Fprintln(os.Stderr, "q: "+err.Error())
+		os.Exit(cli.Code(err))
 	}
 }
