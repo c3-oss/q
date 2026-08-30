@@ -12,9 +12,15 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@commitlint/cli": "^21.0.2",
-    "@commitlint/config-conventional": "^21.0.2",
+    "@commitlint/cli": "^21.2.1",
+    "@commitlint/config-conventional": "^21.2.0",
     "husky": "^9.1.7",
-    "lint-staged": "^17.0.8"
+    "lint-staged": "^17.2.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "fast-uri": "^3.1.5",
+      "js-yaml": "^4.3.1"
+    }
   }
 }
